@@ -1,0 +1,54 @@
+<div class='row'>
+    <div class='col-sm-12 '>
+        <h3>Recipes</h3>
+        
+    </div>  
+</div>
+<p>
+    <input 
+    #query
+    (keyup)="filter(query.value)"
+    type="text" class="form-control" placeholder="Search......">
+</p>
+<table class="table table-striped" [mfData]="recipeListFiltered" #mf="mfDataTable" [mfRowsOnPage]="10" >
+    <thead>
+        <tr>
+            <th>
+                <mfDefaultSorter by="recipeID">Id</mfDefaultSorter> 
+            </th>
+            <th>
+                <mfDefaultSorter by="title">Recipe</mfDefaultSorter>
+            </th>
+            <th>
+                Ingredients
+            </th>
+            <th>
+                Step
+            </th>
+            <th>
+                Level
+            </th>
+            <th>
+                Manage
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of mf.data">
+            <td>{{ item.recipeID }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.ingredients }}</td>
+            <td>{{ item.steps }}</td>
+            <td>{{ item.level }}</td>
+            <td><a [routerLink]="['/viewrecipe/',item.recipeID]"><fa-icon class="custom-fa mr-15" [icon]="faFile" size="2x" ></fa-icon></a></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <td colspan="6">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tfoot>
+</table>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white" > Loading... </p>
+  </ngx-spinner>

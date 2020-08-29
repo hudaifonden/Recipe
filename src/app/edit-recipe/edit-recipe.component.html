@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-sm-10">
+    <div class="row main-container" *ngIf="recipe" #recipeContent>
+      <div class="col-sm-12">
+          <div class="row header-row">
+              <div class="col-sm-12 header-text">{{recipe.title}}</div>
+          </div>
+          <div class="row">
+              <div class="col-sm-2">
+                  
+                 <!-- <img src="..\assets\images\Capture.JPG" alt="..." class="img-thumbnail card-image"> -->
+                 <img *ngIf="! recipe.image1" src="..\assets\images\Capture.JPG" alt="..." class="img-thumbnail card-image">
+                 <img *ngIf="recipe.image1" src="{{'data:image/jpg;base64,' + recipe.image1}}" alt="..." class="img-thumbnail card-image">
+                 
+                    
+              </div>
+              <div class="col-sm-10">
+                  <div class="card card-level">
+                    <div class="card-body">
+                      <h5 class="card-title">Level</h5>
+                      <p class="card-text">{{recipe.level}}</p>
+                      
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-10">
+                  <div class="card card-ingredient">
+                    <div class="card-body">
+                      <h5 class="card-title">Ingredients</h5>
+                      <ul class="card-text" *ngFor="let ing of recipe.ingredients">
+                          <li>{{ ing }}</li>
+                      </ul>
+                      
+                    </div>
+                  </div>
+                </div>
+              <div class="col-sm-2">
+                  
+                <img *ngIf="! recipe.image2" src="..\assets\images\Capture.JPG" alt="..." class="img-thumbnail card-image">
+                <img *ngIf="recipe.image2" src="{{'data:image/jpg;base64,' + recipe.image2}}" alt="..." class="img-thumbnail card-image">
+                    
+              </div>
+                
+          </div>
+          <div class="row">
+              <div class="col-sm-2">
+                  
+                <img *ngIf="! recipe.image3" src="..\assets\images\Capture.JPG" alt="..." class="img-thumbnail card-image">
+                <img *ngIf="recipe.image3" src="{{'data:image/jpg;base64,' + recipe.image3}}" alt="..." class="img-thumbnail card-image">
+                    
+              </div>
+              <div class="col-sm-10">
+                  <div class="card card-step">
+                    <div class="card-body">
+                      <h5 class="card-title">Steps</h5>
+                      <ul class="card-text" *ngFor="let stp of recipe.steps">
+                          <li>{{ stp }}</li>
+                      </ul>
+                      
+                    </div>
+                  </div>
+                </div>
+          </div>
+      </div>
+      
+      
+      
+    </div>
+  </div>  
+  
+  <div class="col-sm-2">
+    <div class="row" *ngIf="recipe">
+      <div class="col-sm-12">
+        <div class="row margin-top-5">
+          <div class="col-sm-12">
+            <div class="cursor-pointer" (click)="savePdf()"><fa-icon class="custom-fa" [icon]="faFilePdf" size="2x" > </fa-icon> Export/Save</div>
+          </div>
+        </div>
+        <div class="row margin-top-15">
+          <div class="col-sm-12">
+            <div class="cursor-pointer" [routerLink]="['/editrecipe/',recipe.recipeID]" type="button"><fa-icon class="custom-fa mr-15" [icon]="faEdit" size="2x" ></fa-icon> Edit</div>
+          </div>
+        </div>
+    
+      </div>
+  </div>
+
+</div>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+  <p style="color: white" > Loading... </p>
+</ngx-spinner>

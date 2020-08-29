@@ -1,0 +1,46 @@
+.row{
+    margin-bottom:5px;
+}
+.img{
+    height: auto;
+    width:auto;
+}
+.main-container{
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+}
+.header-text{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+.header-row{
+    margin-bottom:10px;
+    margin-top:5px !important;
+}
+.card-ingredient{
+    height:230px !important;
+}
+.card-image{
+    height:200px;
+    width:200px;
+}
+.card-step{
+    height:230px !important;
+}
+.card-level{
+    height:100px !important;
+}
+.custom-fa{
+    cursor:pointer;
+}
+.margin-top-15{
+    margin-top:15px;
+}
+.margin-top-5{
+    margin-top:5px;
+}
+.cursor-pointer{
+    cursor:pointer;
+}
